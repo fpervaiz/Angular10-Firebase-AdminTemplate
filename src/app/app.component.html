@@ -1,0 +1,30 @@
+<mat-toolbar color="primary" class="fixed-header">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Angular Material Firebase Admin Template</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <ngx-auth-firebaseui-avatar [canDeleteAccount]=false [canEditAccount]=false textProfile="View Profile"
+        (onSignOut)="redirectToLogin()"></ngx-auth-firebaseui-avatar>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [opened]="true">
+    <mat-nav-list>
+
+      <a mat-list-item [routerLink]="'/home'"> Home </a>
+      <a mat-list-item [routerLink]="'/c1'"> Component 1 </a>
+      <a mat-list-item (click)="sidenav.toggle()">Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
